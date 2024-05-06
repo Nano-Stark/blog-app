@@ -42,6 +42,10 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
+app.use("/api/test", (req, res) => {
+  res.status(200).send("This is a testing route");
+});
+
 app.listen(process.env.PORT, () => {
   console.log("Backend is running.");
 });
