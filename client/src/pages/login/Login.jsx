@@ -17,8 +17,11 @@ export default function Login() {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
+      console.log(userRef.current.value, passwordRef.current.value)
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      console.log(res.data)
     } catch (err) {
+      console.log("Login failure")
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
