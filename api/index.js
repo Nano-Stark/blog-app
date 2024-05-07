@@ -8,9 +8,12 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+const morgan = require('morgan')
 
 dotenv.config();
+app.use(morgan('combined'))
 app.use(express.json());
+
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
@@ -31,6 +34,7 @@ const storage = multer.diskStorage({
     cb(null, req.body.name);
   },
 });
+
 
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
