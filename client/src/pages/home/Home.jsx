@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await apiRequest("/posts" + search);
-      setPosts(res.data);
+      setPosts(res?.data);
     };
     fetchPosts();
   }, [search]);
