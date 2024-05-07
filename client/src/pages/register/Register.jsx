@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./register.css";
 import apiRequest from "../../lib/apiRequest";
 
 export default function Register() {
+  const history = useHistory()
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +19,7 @@ export default function Register() {
         email,
         password,
       });
-      res.data && window.location.replace("/login");
+      res?.data && history.replace("/login") // window.location.replace("/login");
     } catch (err) {
       setError(true);
     }

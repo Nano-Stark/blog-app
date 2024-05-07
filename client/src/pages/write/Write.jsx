@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./write.css";
 import { Context } from "../../context/Context";
 import apiRequest from "../../lib/apiRequest";
 
 export default function Write() {
+  const history = useHistory();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
@@ -28,7 +30,8 @@ export default function Write() {
     }
     try {
       const res = await apiRequest.post("/posts", newPost);
-      window.location.replace("/post/" + res.data._id);
+      // window.location.replace("/post/" + res.data._id);
+      history.replace("/post/" + res.data._id)
     } catch (err) {}
   };
   return (

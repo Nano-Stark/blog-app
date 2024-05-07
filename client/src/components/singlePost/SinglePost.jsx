@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
 import apiRequest from "../../lib/apiRequest";
 
 export default function SinglePost() {
   const location = useLocation();
+  const history = useHistory();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const PF = `${process.env.REACT_API_URL}/images/}`;
@@ -30,7 +31,8 @@ export default function SinglePost() {
       await apiRequest.delete(`/posts/${post._id}`, {
         data: { username: user.username },
       });
-      window.location.replace("/");
+      // window.location.replace("/");
+      history.replace("/")
     } catch (err) {}
   };
 
