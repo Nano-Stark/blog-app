@@ -9,9 +9,12 @@ const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
 const morgan = require('morgan')
+const cors = require("cors")
 
 dotenv.config();
+
 app.use(morgan('combined'))
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 
 app.use("/images", express.static(path.join(__dirname, "/images")));
