@@ -31,7 +31,7 @@ export default function Write() {
     try {
       const res = await apiRequest.post("/posts", newPost);
       // window.location.replace("/post/" + res.data._id);
-      history.replace("/post/" + res.data._id)
+      history.push("/post/" + res.data._id)
     } catch (err) {}
   };
   return (

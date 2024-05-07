@@ -32,7 +32,7 @@ export default function SinglePost() {
         data: { username: user.username },
       });
       // window.location.replace("/");
-      history.replace("/")
+      history.push("/")
     } catch (err) {}
   };
 
