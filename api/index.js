@@ -53,6 +53,11 @@ app.use("/api/test", (req, res) => {
   res.status(200).send("This is a testing route");
 });
 
+app.use((err, req, res, next) => {
+  console.log("Error:;; ", err)
+  res.end()
+})
+
 app.listen(process.env.PORT, () => {
   console.log("Backend is running.");
 });
