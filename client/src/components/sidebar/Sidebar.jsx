@@ -9,7 +9,7 @@ export default function Sidebar() {
   useEffect(() => {
     const getCats = async () => {
       const res = await apiRequest("/categories");
-      setCats(res.data);
+      setCats(res?.data);
     };
     getCats();
   }, []);
@@ -30,7 +30,7 @@ export default function Sidebar() {
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
           {cats?.map((c) => (
-            <Link to={`/?cat=${c.name}`} className="link">
+            <Link to={`/?cat=${cname}`} className="link">
             <li className="sidebarListItem">{c.name}</li>
             </Link>
           ))}
