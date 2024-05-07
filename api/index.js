@@ -13,7 +13,7 @@ const cors = require("cors")
 
 dotenv.config();
 
-app.use(morgan('combined'))
+app.use(morgan('dev'))
 console.log("client url: ", process.env.CLIENT_URL)
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
@@ -32,7 +32,7 @@ mongoose
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images");
+    cb(null, "./images");
   },
   filename: (req, file, cb) => {
     cb(null, req.body.name);
