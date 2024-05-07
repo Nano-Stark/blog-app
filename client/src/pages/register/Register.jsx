@@ -19,7 +19,7 @@ export default function Register() {
         email,
         password,
       });
-      res?.data && history.replace("/login") // window.location.replace("/login");
+      res?.data && history.push("/login") // window.location.replace("/login");
     } catch (err) {
       setError(true);
     }
